@@ -8,57 +8,48 @@ const menuitems = [
     title: "About",
     path: "/#about",
   },
-  {
-    title: "Pricing",
-    path: "/#pricing",
-  },
-  {
-    title: "Team",
-    path: "/#team",
-  },
+  // {
+  //   title: "Pricing",
+  //   path: "/#pricing",
+  // },
+  // {
+  //   title: "Team",
+  //   path: "/#team",
+  // },
   {
     title: "Contact",
     path: "/#contact",
   },
   {
-    title: "Blog",
-    path: "/blog",
+    title: "Demos",
+    path: "/#demo",
   },
-  {
-    title: "Pages",
-    path: "javascript:void(0)",
-    children: [
-      { title: "About Page", path: "/about" },
-      { title: "Pricing Page", path: "/pricing" },
-      { title: "Contact Page", path: "/contact" },
-      { title: "Blog Grid Page", path: "/blog" },
-      { title: "Sign Up Page", path: "/signup" },
-      { title: "Sign In Page", path: "/signin" },
-      { title: "404 Page", path: "/404" },
-    ],
-  },
+ 
 ];
 ---
 
 <header class="ud-header absolute top-0 left-0 z-40 flex w-full items-center bg-transparent">
   <div class="container">
-    <div class="relative -mx-4 flex items-center justify-between">
-      <div class="w-60 max-w-full px-4">
-        <a href="/" class="navbar-logo block w-full py-5">
-          {(Astro.url.pathname === '/') ? (
-            <img
-              src="/assets/logo/logo-white.svg"
-              alt="logo"
-              class="header-logo w-full"
-            />
-          ) : (
-            <img src="/assets/logo/logo.svg" alt="logo" class="w-full dark:hidden" />
-            <img src="/assets/logo/logo-white.svg" alt="logo" class="w-full hidden dark:block" />
-          )}
-          
+    <div class="relative-mx-4 flex items-center justify-between">
+      <div class="w-60 max-w-full px-4 flex items-center"> <!-- Added flex class here -->
+        <a href="/" class="navbar-logo w-full py-5 flex items-center"> <!-- Added flex class here -->
+          <img
+            src="/assets/logo/logo.jpeg"
+            alt="logo"
+            class="header-logo rounded-lg"
+            width="70"
+          />
+          <h1 class="flex text-xl font-bold text-white ml-5">
+            Light 
+          </h1>
+          <h1 class="flex text-xl font-bold text-white ml-2">
+            Webx
+          </h1>
         </a>
+
       </div>
-      <div class="flex w-full items-center justify-between px-4">
+
+      <div class="flex w-full items-center justify-between px-4 ml-16">
         <div>
           <button
             id="navbarToggler"
@@ -81,7 +72,7 @@ const menuitems = [
             <ul class="block lg:flex 2xl:ml-20">
               {
                 menuitems.map((item, index) => {
-                  if(!item.children) {
+                  if(item) {
                     return (
                       <li class="group relative">
                         <a
@@ -95,47 +86,12 @@ const menuitems = [
 
                     )
                   }
-                
-                  if(item.children) {
-                    return (
-                      <li class="submenu-item group relative">
-                        <a
-                          href={item.path}
-                          class={` ${index}
-                          ${Astro.url.pathname === '/' ? 'relative mx-8 flex items-center justify-between py-2 font-medium text-base text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-8 lg:inline-flex lg:py-6 lg:pl-0 lg:pr-4 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10' : 'relative mx-8 flex items-center justify-between py-2 font-medium text-base text-primary group-hover:text-primary lg:mr-0 lg:ml-8 lg:inline-flex lg:py-6 lg:pl-0 lg:pr-4 xl:ml-10'}
-                          `}>
-                          {item.title}
-
-                          <svg class="fill-current ml-2" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              d="M7.99999 14.9C7.84999 14.9 7.72499 14.85 7.59999 14.75L1.84999 9.10005C1.62499 8.87505 1.62499 8.52505 1.84999 8.30005C2.07499 8.07505 2.42499 8.07505 2.64999 8.30005L7.99999 13.525L13.35 8.25005C13.575 8.02505 13.925 8.02505 14.15 8.25005C14.375 8.47505 14.375 8.82505 14.15 9.05005L8.39999 14.7C8.27499 14.825 8.14999 14.9 7.99999 14.9Z" 
-                            />
-                          </svg>
-                        </a>
-
-                        <div
-                          class="submenu relative top-full left-0 hidden w-[250px] rounded-sm bg-white dark:bg-dark-2 p-4 transition-[top] duration-300 group-hover:opacity-100 lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full"
-                        >
-                          {
-                            item.children.map(item => (
-                              <a
-                                href={item.path}
-                                class="block rounded py-[10px] px-4 text-sm text-body-color dark:text-dark-6 hover:text-primary dark:hover:text-primary"
-                              >
-                                {item.title}
-                              </a>
-                            ))
-                          }
-                        </div>
-                      </li>
-                    )
-                  }
                 })
               }
             </ul>
           </nav>
         </div>
-        <div class="justify-end pr-16 flex items-center lg:pr-0">
+        <div class=" pr-16 flex items-center lg:pr-0">
           <button class="inline-flex cursor-pointer items-center" id="themeSwitcher" >
             <span class={`hidden dark:block ${Astro.url.pathname === '/' ? 'text-white' : 'text-dark dark:text-white'}`}>
               <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -175,20 +131,7 @@ const menuitems = [
               </svg>
             </span>
           </button>
-          <div class="hidden sm:flex">
-            <a
-              href="/signin"
-              class={`${Astro.url.pathname === '/' ? 'loginBtn py-2 px-[22px] text-base font-medium text-white hover:opacity-70' : 'loginBtn py-2 px-[22px] text-base font-medium text-dark dark:text-white hover:opacity-70'}`}
-            >
-              Sign In
-            </a>
-            <a
-              href="/signup"
-              class={`${Astro.url.pathname === '/' ? 'signUpBtn rounded-md bg-white bg-opacity-20 py-2 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark' : 'signUpBtn rounded-md bg-primary py-2 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-blue-dark'}`}
-            >
-              Sign Up
-            </a>
-          </div>
+         
         </div>
       </div>
     </div>
