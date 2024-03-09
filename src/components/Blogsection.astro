@@ -14,45 +14,52 @@ publishedBlogEntries.sort(function (a, b) {
 
 const projects = [
   {
-    image: '/assets/blog/blog-01.jpg',
+    image: '/assets/blog/lawfirm.webp',
     title: 'Law Firm Web Application',
-    url: 'javascript:void(0)',
+    url: 'https://www.mpdmlaw.com/',
     description:
       'We foster creativity to bring innovative solutions to the table.',
   },
   {
     image: '/assets/blog/helpdesk.webp',
     title: 'Complain Lodging System',
-    url: 'javascript:void(0)',
+    url: 'https://supportdesk.jnec.edu.bt/',
     description:
       'We foster creativity to bring innovative solutions to the table.',
   },
 
   {
-    image: '/assets/blog/blog-01.jpg',
+    image: '/assets/blog/heeseb.webp',
     title: 'HEESEB Research Web Application',
-    url: 'javascript:void(0)',
+    url: 'https://heeseb.com/',
     description:
       'We foster creativity to bring innovative solutions to the table.',
   },
   {
-    image: '/assets/blog/blog-01.jpg',
+    image: '/assets/blog/incubation.webp',
     title: 'Incubation Management Web Application',
-    url: 'javascript:void(0)',
+    url: 'https://eic.jnec.edu.bt/',
     description:
       'We foster creativity to bring innovative solutions to the table.',
   },
   {
     image: '/assets/blog/travel.webp',
     title: 'Travel Agency Website',
-    url: 'javascript:void(0)',
+    url: 'https://bhutanacetravel.com/',
+    description:
+      'We foster creativity to bring innovative solutions to the table.',
+  },
+  {
+    image: '/assets/blog/ecommerce.webp',
+    title: 'E-commerce Web Application',
+    url: 'https://himalayacordyceps.com/',
     description:
       'We foster creativity to bring innovative solutions to the table.',
   },
   {
     image: '/assets/blog/receipt.webp',
     title: 'Paperwork Generating System',
-    url: 'javascript:void(0)',
+    url: 'https://digital-paperwork.com/s',
     description:
       'We foster creativity to bring innovative solutions to the table.',
   },
@@ -85,13 +92,13 @@ const projects = [
       {
         projects.map((blogPostEntry, index) => (
           <li class="w-full px-4 md:w-1/2 lg:w-1/3">
-            <a class="wow fadeInUp group block mb-10" data-wow-delay=".1s" href="#" aria-disabled="true">
+            <a class="wow fadeInUp group block mb-10" data-wow-delay=".1s" target="_blank" href={blogPostEntry.url} aria-disabled="true">
               <div class="mb-8 overflow-hidden rounded-[5px]">
                 <span class="block">
                   <img
                     src={blogPostEntry.image}
                     alt={blogPostEntry.title}
-                    class="w-full ease-in duration-300 group-hover:rotate-6 group-hover:scale-125"
+                    class="w-full h-[200px] ease-in duration-300 group-hover:rotate-6 group-hover:scale-125"
                   />
                 </span>
               </div>
