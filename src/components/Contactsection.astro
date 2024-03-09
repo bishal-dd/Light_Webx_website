@@ -1,4 +1,45 @@
-<!-- ====== Contact Start ====== -->
+---
+import axios from 'axios'
+import sgMail from "@sendgrid/mail";
+
+sgMail.setApiKey(import.meta.env.SENDGRID_API_KEY);
+
+export const prerender = true;
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("fullName");
+    const email = data.get("email");
+    const phone = data.get("phone");
+    const message = data.get("message");
+    const msg = {
+    to: "dhakalbishal930@gmail.com",
+    from: "lightwebx@gmail.com",
+    subject: "Message from Contact Form",
+    html: `<b>Name</b>: ${name}<br>
+            <b>Email</b>: ${email}<br>
+            <b>Phone</b>: ${phone}<br>
+            <b>Message</b>: ${message}`,
+  };
+  await sgMail.send(msg).then(() => {
+    console.log("Email sent");
+  });
+    // const res = await axios.post("https://9vwu65idqk.execute-api.ap-south-1.amazonaws.com/prod/send-email", {
+    //   name,
+    //   email,
+    //   phone,
+    //   message
+    // })
+    // console.log(res.data)
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+
 <section id="contact" class="relative py-20 md:py-[120px]">
   <div class="absolute top-0 left-0 -z-[1] w-full dark:bg-dark h-full"></div>
   <div class="absolute top-0 left-0 -z-[1] h-1/2 w-full bg-[#E9F9FF] dark:bg-dark-700 lg:h-[45%] xl:h-1/2"></div>
@@ -27,7 +68,7 @@
               <div>
                 <h5 class="mb-[18px] text-lg font-semibold text-dark dark:text-white">Our Location</h5>
                 <p class="text-base text-body-color dark:text-dark-6">
-                  401 Broadway, 24th Floor, Orchard Cloud View, London
+                  Lower Motithang, Thimphu, Bhutan
                 </p>
               </div>
             </div>
@@ -40,10 +81,7 @@
               </div>
               <div>
                 <h5 class="mb-[18px] text-lg font-semibold text-dark dark:text-white">How Can We Help?</h5>
-                <p class="text-base text-body-color dark:text-dark-6">info@yourdomain.com</p>
-                <p class="text-base text-body-color dark:text-dark-6 mt-1">
-                  contact@yourdomain.com
-                </p>
+                <p class="text-base text-body-color dark:text-dark-6"><a href="mailto:lightwebx@gmailcom">lightwebx@gmail.com</a></p>
               </div>
             </div>
           </div>
@@ -57,31 +95,33 @@
           <h3 class="mb-8 text-2xl font-semibold md:text-[28px] md:leading-[1.42] text-dark dark:text-white">
             Send us a Message
           </h3>
-          <form>
+          <form method="POST" id="form" name="form">
             <div class="mb-[22px]">
               <label for="fullName" class="block text-sm text-body-color dark:text-dark-6 mb-4">Full Name*</label>
-              <input type="text" name="fullName" placeholder="Adam Gelius"
-                class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none" />
+              <input type="text" name="fullName" placeholder="Adam Gelius" id="fullName"
+                class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none"  required/>
             </div>
             <div class="mb-[22px]">
               <label for="email" class="block text-sm text-body-color dark:text-dark-6 mb-4">Email*</label>
-              <input type="email" name="email" placeholder="example@yourmail.com"
-                class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none" />
+              <input type="email" name="email" placeholder="example@yourmail.com" id="email"
+                class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none" required/>
             </div>
             <div class="mb-[22px]">
               <label for="phone" class="block text-sm text-body-color dark:text-dark-6 mb-4">Phone*</label>
-              <input type="text" name="phone" placeholder="+885 1254 5211 552"
-                class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none" />
+              <input type="text" name="phone" placeholder="+885 1254 5211 552" id="phone"
+                class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none" required/>
             </div>
             <div class="mb-[30px]">
               <label for="message" class="block text-sm text-body-color dark:text-dark-6 mb-4">Message*</label>
-              <textarea name="message" rows="1" placeholder="type your message here"
-                class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 resize-none border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none"></textarea>
+              <textarea name="message" rows="1" placeholder="type your message here" id="message"
+                class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 resize-none border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none" required></textarea>
             </div>
             <div class="mb-0">
-              <button type="submit"
+              <button id="tgt"
+                type="submit"
+                disabled
                 class="inline-flex items-center justify-center rounded-md bg-primary py-3 px-10 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-blue-dark">
-                Send
+                This is Disabled for Now
               </button>
             </div>
           </form>
@@ -90,4 +130,3 @@
     </div>
   </div>
 </section>
-<!-- ====== Contact End ====== -->
