@@ -23,8 +23,6 @@ if (Astro.request.method === "POST") {
   }
 }
 ---
-
-
 <section id="contact" class="relative py-20 md:py-[120px]">
   <div class="absolute top-0 left-0 -z-[1] w-full dark:bg-dark h-full"></div>
   <div class="absolute top-0 left-0 -z-[1] h-1/2 w-full bg-[#E9F9FF] dark:bg-dark-700 lg:h-[45%] xl:h-1/2"></div>
@@ -104,8 +102,9 @@ if (Astro.request.method === "POST") {
             <div class="mb-0">
               <button id="tgt"
                 type="submit"
+                disabled
                 class="inline-flex items-center justify-center rounded-md bg-primary py-3 px-10 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-blue-dark">
-                Send
+                Disabled
               </button>
             </div>
           </form>
