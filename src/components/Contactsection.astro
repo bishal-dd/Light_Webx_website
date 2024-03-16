@@ -1,8 +1,5 @@
 ---
 import axios from 'axios'
-import sgMail from "@sendgrid/mail";
-
-sgMail.setApiKey(import.meta.env.SENDGRID_API_KEY);
 
 export const prerender = true;
 if (Astro.request.method === "POST") {
@@ -12,25 +9,13 @@ if (Astro.request.method === "POST") {
     const email = data.get("email");
     const phone = data.get("phone");
     const message = data.get("message");
-    const msg = {
-    to: "dhakalbishal930@gmail.com",
-    from: "lightwebx@gmail.com",
-    subject: "Message from Contact Form",
-    html: `<b>Name</b>: ${name}<br>
-            <b>Email</b>: ${email}<br>
-            <b>Phone</b>: ${phone}<br>
-            <b>Message</b>: ${message}`,
-  };
-  await sgMail.send(msg).then(() => {
-    console.log("Email sent");
-  });
-    // const res = await axios.post("https://9vwu65idqk.execute-api.ap-south-1.amazonaws.com/prod/send-email", {
-    //   name,
-    //   email,
-    //   phone,
-    //   message
-    // })
-    // console.log(res.data)
+
+     await axios.post("https://ba5dwsm30m.execute-api.us-east-1.amazonaws.com/", {
+     name,
+    email,
+    phone,
+    message
+    })
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
@@ -119,9 +104,8 @@ if (Astro.request.method === "POST") {
             <div class="mb-0">
               <button id="tgt"
                 type="submit"
-                disabled
                 class="inline-flex items-center justify-center rounded-md bg-primary py-3 px-10 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-blue-dark">
-                This is Disabled for Now
+                Send
               </button>
             </div>
           </form>

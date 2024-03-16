@@ -1,3 +1,23 @@
+---
+import axios from 'axios'
+
+export const prerender = true;
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const email = data.get("email");
+
+     await axios.post("https://ba5dwsm30m.execute-api.us-east-1.amazonaws.com/emailList", {
+    email,
+    })
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
 <div
   class="wow fadeInUp relative mb-12 overflow-hidden rounded-[5px] bg-primary py-[60px] px-11 text-center lg:px-8"
   data-wow-delay=".1s"
@@ -8,9 +28,10 @@
   <p class="mb-5 text-base text-white">
     Enter your email to receive our latest newsletter.
   </p>
-  <form>
+  <form method="POST">
     <input
       type="email"
+      name="email"
       placeholder="Your email address"
       class="mb-4 h-[50px] w-full rounded-md border border-transparent bg-white/10 text-center text-base text-white placeholder:text-white/60 outline-none focus:border-white focus-visible:shadow-none"
     />
