@@ -7,7 +7,7 @@ if (Astro.request.method === 'POST') {
     const data = await Astro.request.formData();
     const email = data.get('email');
 
-    await axios.post('https://ba5dwsm30m.execute-api.us-east-1.amazonaws.com/emailList', {
+    await axios.post('https://6lgthqn9rl.execute-api.ap-south-1.amazonaws.com/dev/emailList', {
       email,
     });
   } catch (error) {
