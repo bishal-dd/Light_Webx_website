@@ -11,5 +11,7 @@ export default defineConfig({
   output: 'hybrid',
   site: 'https://www.lightwebx.com',
   integrations: [tailwind(), compress(), sitemap(), react()],
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: { enabled: true },
+  }),
 });
