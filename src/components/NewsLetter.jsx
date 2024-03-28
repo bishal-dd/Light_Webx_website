@@ -5,20 +5,15 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const NewsLetter = () => {
   const emailRef = useRef();
-  const notify = () => toast.success('Wow so easy!');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
-    await axios
-      .post('https://6lgthqn9rl.execute-api.ap-south-1.amazonaws.com/dev/emailList', {
-        email,
-      })
-      .then((res) => {
-        console.log(res);
-        toast.success('Subscribed successfully!');
-        e.target.reset();
-      });
+    await axios.post('https://6lgthqn9rl.execute-api.ap-south-1.amazonaws.com/dev/emailList', {
+      email,
+    });
+    toast.success('Subscribed successfully!');
+    e.target.reset();
   };
   return (
     <>
