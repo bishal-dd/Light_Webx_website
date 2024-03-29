@@ -2,6 +2,7 @@
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
 import BackToTop from '../components/layout/BackToTop.astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   description: string;
@@ -12,7 +13,7 @@ interface Props {
 const { description, title, image } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -26,36 +27,44 @@ const { description, title, image } = Astro.props;
     <meta name="description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="twitter:image" content={image} />
-          <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGSE6J08SN"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGSE6J08SN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-          gtag('config', 'G-GGSE6J08SN');
-        </script>
+      gtag('config', 'G-GGSE6J08SN');
+    </script>
     <title>{title}</title>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TP499GD9"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TP499GD9"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
     <Header />
     <!-- <Header client:load /> -->
+    <SpeedInsights />
     <main>
       <slot />
     </main>
     <Footer />
     <BackToTop />
     <style is:global>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
       body {
-        font-family: "Inter", sans-serif;
+        font-family: 'Inter', sans-serif;
       }
       .sticky-header {
-        @apply fixed z-[9999] bg-white/80 dark:bg-dark/80 transition;
+        @apply fixed z-[9999] bg-white/80 transition dark:bg-dark/80;
         backdrop-filter: blur(5px);
         box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
       }
@@ -69,7 +78,7 @@ const { description, title, image } = Astro.props;
       }
 
       .sticky-header #navbarCollapse li > a {
-        @apply text-dark dark:text-white hover:text-primary dark:hover:text-primary hover:opacity-100;
+        @apply text-dark hover:text-primary hover:opacity-100 dark:text-white dark:hover:text-primary;
       }
       #navbarCollapse li .ud-menu-scroll.active {
         @apply opacity-70;
@@ -78,7 +87,7 @@ const { description, title, image } = Astro.props;
         @apply text-primary opacity-100;
       }
       .sticky-header .loginBtn {
-        @apply text-dark dark:text-white hover:text-primary dark:hover:text-primary hover:opacity-100;
+        @apply text-dark hover:text-primary hover:opacity-100 dark:text-white dark:hover:text-primary;
       }
 
       .sticky-header .signUpBtn {
@@ -106,22 +115,21 @@ const { description, title, image } = Astro.props;
 
       .common-carousel .swiper-button-next,
       .common-carousel .swiper-button-prev {
-        @apply !static h-12 w-12 rounded-lg bg-white dark:bg-dark shadow-testimonial-btn text-dark dark:text-white m-0 ease-out duration-200 hover:bg-primary hover:text-white hover:shadow-none;
+        @apply !static m-0 h-12 w-12 rounded-lg bg-white text-dark shadow-testimonial-btn duration-200 ease-out hover:bg-primary hover:text-white hover:shadow-none dark:bg-dark dark:text-white;
       }
 
       .common-carousel .swiper-button-next svg,
       .common-carousel .swiper-button-prev svg {
-        @apply w-auto h-auto;
+        @apply h-auto w-auto;
       }
-
     </style>
     <script>
-      import "../scripts/stickymenu.js";
-      import "../scripts/dropdown.js";
-      import "../scripts/darkMode.js";
-      import "../scripts/scrolltop.js";
-      import "../scripts/scrollmenu.js";
-      import "../scripts/testimonial.js";
+      import '../scripts/stickymenu.js';
+      import '../scripts/dropdown.js';
+      import '../scripts/darkMode.js';
+      import '../scripts/scrolltop.js';
+      import '../scripts/scrollmenu.js';
+      import '../scripts/testimonial.js';
     </script>
   </body>
 </html>
