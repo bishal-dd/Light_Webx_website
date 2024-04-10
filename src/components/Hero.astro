@@ -2,6 +2,32 @@
 import { QuoteButton } from './QuoteButton';
 ---
 
+<style>
+  .rotate-center {
+    -webkit-animation: rotate-center 0.6s ease-in-out both;
+    animation: rotate-center 0.6s ease-in-out both;
+  }
+  @-webkit-keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+</style>
 <!-- ====== Hero Section Start -->
 <section
   id="home"
@@ -27,7 +53,7 @@ import { QuoteButton } from './QuoteButton';
             creativity.
           </p>
           <ul class="mb-10 flex flex-wrap items-center justify-center gap-5">
-            <li>
+            <li class="rotate-center">
               <a
                 href="https://api.whatsapp.com/send?phone=17959259"
                 target="_blank"
