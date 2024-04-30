@@ -27,6 +27,31 @@ import { QuoteButton } from './QuoteButton';
       transform: rotate(360deg);
     }
   }
+
+  .text-focus-in {
+    animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  }
+  @keyframes text-focus-in {
+    0% {
+      filter: blur(12px);
+      opacity: 0;
+    }
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+  .scale-up-center:hover {
+    animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+  @keyframes scale-up-center {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.3);
+    }
+  }
 </style>
 <!-- ====== Hero Section Start -->
 <section
@@ -41,12 +66,12 @@ import { QuoteButton } from './QuoteButton';
           data-wow-delay=".2s"
         >
           <h1
-            class="mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]"
+            class="text-focus-in mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]"
           >
             Transforming Ideas into Digital Reality, Make a Change.
           </h1>
           <p
-            class="mx-auto mb-9 max-w-[600px] text-base font-medium text-white sm:text-lg sm:leading-[1.44]"
+            class="text-focus-in mx-auto mb-9 max-w-[600px] text-base font-medium text-white sm:text-lg sm:leading-[1.44]"
           >
             We provide innovative web solutions tailored to your needs, delivering cutting-edge
             designs and robust functionality. Let us bring your vision to life with precision and
@@ -57,7 +82,7 @@ import { QuoteButton } from './QuoteButton';
               <a
                 href="https://api.whatsapp.com/send?phone=17959259"
                 target="_blank"
-                class="flex items-center gap-4 rounded-md bg-white px-6 py-[14px] text-base font-medium text-dark transition duration-300 ease-in-out hover:bg-gray-2 hover:text-body-color"
+                class="scale-up-center flex items-center gap-4 rounded-md bg-white px-6 py-[14px] text-base font-medium text-dark transition duration-300 ease-in-out hover:bg-gray-2 hover:text-body-color"
               >
                 <svg
                   class="fill-current"
@@ -89,7 +114,7 @@ import { QuoteButton } from './QuoteButton';
           >
             <a
               href="https://www.instagram.com/lightwebx/"
-              class="mt-2 text-white/60 duration-300 ease-in-out hover:text-white"
+              class="scale-up-center mt-2 text-white/60 duration-300 ease-in-out hover:text-white"
               target="_blank"
             >
               <svg
@@ -109,7 +134,7 @@ import { QuoteButton } from './QuoteButton';
 
             <a
               href="https://www.facebook.com/lightwebx"
-              class="text-white/60 duration-300 ease-in-out hover:text-white"
+              class="scale-up-center text-white/60 duration-300 ease-in-out hover:text-white"
               target="_blank"
             >
               <svg
@@ -133,7 +158,7 @@ import { QuoteButton } from './QuoteButton';
               target="_blank"
             >
               <svg
-                class="fill-current"
+                class="scale-up-center fill-current"
                 width="82"
                 height="64"
                 viewBox="0 0 41 36"
