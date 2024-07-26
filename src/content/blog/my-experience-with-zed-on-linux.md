@@ -3,7 +3,7 @@ draft: false
 title: 'My Experience with Zed on Linux'
 snippet: 'When I first started my development journey, I used to code on plain old Notepad. After that, I used Notepad++ a few times.'
 image: { src: '/assets/blog/zed.webp', alt: 'blog details' }
-publishDate: '2024-07-26 11:39'
+publishDate: '2024-07-25 11:39'
 category: 'related'
 author: 'Bishal'
 bigImg: { src: '/assets/blog/zed.webp', alt: 'blog details' }
